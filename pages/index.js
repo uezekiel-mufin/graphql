@@ -3,10 +3,8 @@ import Image from "next/image";
 import { PostCard, Categories, PostWidget } from "../components";
 import { getPosts } from "../services";
 
-console.log(getPosts());
 const Home = ({ fetchedPosts }) => {
   const posts = fetchedPosts?.postsConnection.edges;
-  console.log(posts);
   return (
     <div className='container mx-auto px-10 mb-8 '>
       <Head>
@@ -35,6 +33,7 @@ export default Home;
 
 export async function getStaticProps() {
   const fetchedPosts = (await getPosts()) || [];
+
   return {
     props: { fetchedPosts },
   };
