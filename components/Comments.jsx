@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-const Comments = () => {
-  return (
-    <div>Comments</div>
-  )
-}
+const CommentsForm = () => {
+  return <div>CommentsForm</div>;
+};
 
-export default Comments
+export default CommentsForm;
