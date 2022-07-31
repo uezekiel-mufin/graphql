@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["media.graphassets.com"],
   },
+  pageExtensions: ["mdx", "md", "jsx", "js", "tsx", "ts"],
 };
 
 module.exports = nextConfig;

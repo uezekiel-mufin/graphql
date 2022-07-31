@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import { submitComment } from "../services";
-const Comments = () => {
+const Comments = ({ slug }) => {
   const [error, setError] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [localStorage, setLocalStorage] = useState(null);
@@ -29,7 +29,7 @@ const Comments = () => {
       return;
     }
 
-    const commentObj = { name, email, comment, storeData };
+    const commentObj = { name, email, comment, slug };
 
     if (storeData) {
       window.localStorage.setItem("name", name);
@@ -38,6 +38,7 @@ const Comments = () => {
       window.localStorage.removeItem("name", name);
       window.localStorage.removeItem("email", email);
     }
+    console.log(commentObj);
 
     submitComment(commentObj).then((res) => {
       console.log("I LOVE JAVASCRIPT");
