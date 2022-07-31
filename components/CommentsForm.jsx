@@ -13,13 +13,16 @@ const Comments = () => {
   useEffect(() => {
     nameEl.current.value = window.localStorage.getItem("name");
     emailEl.current.value = window.localStorage.getItem("email");
+    console.log(nameEl.current.value);
+    console.log(emailEl.current.value);
   }, []);
+
   const handleCommentSubmission = () => {
     setError(false);
     const { value: comment } = commentEl.current;
-    const { value: email } = commentEl.current;
-    const { value: name } = commentEl.current;
-    const { checked: storeData } = commentEl.current;
+    const { value: email } = emailEl.current;
+    const { value: name } = nameEl.current;
+    const { checked: storeData } = storeDataEl.current;
 
     if (!comment || !name || !email) {
       setError(true);
@@ -37,12 +40,15 @@ const Comments = () => {
     }
 
     submitComment(commentObj).then((res) => {
+      console.log("I LOVE JAVASCRIPT");
       setShowSuccessMessage(true);
+      console.log(res);
       setTimeout(() => {
         setShowSuccessMessage(false);
       }, 3000);
     });
   };
+
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 pb-12 mb-8'>
       <h3 className='text-xl mb-8 font-semibold border-b pb-4'>

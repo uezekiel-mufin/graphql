@@ -1,6 +1,8 @@
 import { request, gql } from "graphql-request";
+import absoluteUrl from "next-absolute-url";
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
+const graphqlAPI =
+  "https://api-eu-west-2.hygraph.com/v2/cl648y1kv7wpz01uk8acs8sjc/master";
 console.log(graphqlAPI);
 export const getPosts = async () => {
   const query = gql`
@@ -124,9 +126,16 @@ export const getCategories = async () => {
 };
 
 export const submitComment = async (obj) => {
-  const result = await fetch("/api/comments", {
-    method: "POST",
-    body: JSON.stringify(obj),
-  });
-  return result.json;
+  try {
+    const result = await fetch("/api/comments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    });
+    return result.json;
+  } catch (error) {
+    console.error(error);
+  }
 };

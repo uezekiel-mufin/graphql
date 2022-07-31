@@ -16,9 +16,9 @@
     "incremental": true
   },
   "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "next-env.d.js",
+    "**/*.js",
+    "**/*.jsx",
     "pages/index.jsx",
     "pages/_app.jsx"
   ],
